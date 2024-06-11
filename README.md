@@ -50,6 +50,10 @@ mini-calculator/
    - Use the "C" button to clear the display.
    - Use the "DEL" button to delete the last entered character.
 
+## Output
+![mini_calculator_output](https://github.com/Lavz-8/Mini-Calculator/assets/145861363/46bf0556-a51b-4a34-8437-6d8d47c6edd1)
+
+
 ## Credits
 This Mini Calculator was created by **Lavanya Varadharajan**.
 
