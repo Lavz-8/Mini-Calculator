@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mini Calculator</title>
+    <link rel="icon" href="img\favicon.png" type="image/x-icon"> <!-- Set the path to your logo file -->
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-image: url('img/mini_calculator_bg.jpg'); /* Set your absolute file path */
+            background-size: cover;
+            margin: 0;
+            font-family: 'Roboto', sans-serif;
+            color: #333; /* Dark text color */
+        }
+        
+        .header {
+            background-image: linear-gradient(to bottom right, #98e6f9, #044293);
+            color: #ffffff; /* White text color */
+            font-size: 1.5em;
+            padding: 10px;
+            text-align: center;
+            border-bottom: 1px solid #ccc; /* Lighter gray border */
+            border-radius: 15px 15px 0 0;
+            font-weight: bold; /* Making the text bold */
+
+        }
+
+        .calculator {
+            background-image: linear-gradient(to bottom right, #fafafa98, #66CCCC); /* Gradient background */
+            border-radius: 15px;
+            box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.5);
+            overflow: hidden;
+            width: 320px;
+        }
+
+        .display {
+            background-color: #f0f0f0; /* Light gray */
+            color: #333; /* Dark text color */
+            font-size: 2.5em;
+            padding: 20px;
+            text-align: right;
+            border-bottom: 1px solid #ccc; /* Lighter gray border */
+            border-radius: 15px 15px 0 0;
+        }
+
+        .buttons {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1px;
+        }
+
+        button {
+            background-image: linear-gradient(to bottom right, #fafafa98, #66CCCC); /* Gradient background for buttons */
+            border: none;
+            font-size: 1.5em;
+            padding: 20px;
+            cursor: pointer;
+            transition: background-image 0.3s, transform 0.1s;
+            border-radius: 5px;
+            color: #333; /* Dark text color */
+        }
+
+        button:hover {
+            background-image: linear-gradient(to bottom right, #d7d7d798, #5c8da9); /* Lighter shade of gradient on hover */
+        }
+
+        button:active {
+            transform: scale(0.95);
+        }
+
+        button.zero {
+            grid-column: span 2;
+        }
+
+        button.operator {
+            background-image: linear-gradient(to bottom right, #98e6f9, #044293); /* Gradient background for special buttons */
+            color: #fff; /* White text color */
+        }
+
+        button.operator:hover {
+            background-image: linear-gradient(to bottom right, #6cc9f9, #092c5a); /* Darker shade of gradient for special buttons on hover */
+        }
+
+        button.operator:active {
+            transform: scale(0.95);
+        }
+
+        .special {
+            background-image: linear-gradient(to bottom right, #f0a9a9, #d72424); /* Gradient background for operator buttons */
+            color: #fff; /* White text color */
+        }
+
+        .special:hover {
+            background-image: linear-gradient(to bottom right, #c98181, #841c1c); /* Darker shade of gradient for operator buttons on hover */
+        }
+
+        .special:active {
+            transform: scale(0.95);
+        }
+
+        button.enter {
+            grid-row: span 2;
+        }
+    </style>
+</head>
+<body>
+    <div class="calculator">
+        <div class="header">Calculator</div>
+        <div class="display" id="display"></div>
+        <div class="buttons">
+            <button class="special" onclick="clearDisplay()">C</button>
+            <button class="special" onclick="deleteLast()">DEL</button>
+            <button class="operator" onclick="appendToDisplay('/')">/</button>
+            <button class="operator" onclick="appendToDisplay('*')">*</button>
+            <button onclick="appendToDisplay('7')">7</button>
+            <button onclick="appendToDisplay('8')">8</button>
+            <button onclick="appendToDisplay('9')">9</button>
+            <button class="operator" onclick="appendToDisplay('-')">-</button>
+            <button onclick="appendToDisplay('4')">4</button>
+            <button onclick="appendToDisplay('5')">5</button>
+            <button onclick="appendToDisplay('6')">6</button>
+            <button class="operator" onclick="appendToDisplay('+')">+</button>
+            <button onclick="appendToDisplay('1')">1</button>
+            <button onclick="appendToDisplay('2')">2</button>
+            <button onclick="appendToDisplay('3')">3</button>
+            <button class="operator enter" onclick="calculateResult()">Enter</button>
+            <button onclick="appendToDisplay('0')" class="zero">0</button>
+            <button onclick="appendToDisplay('.')">.</button>
+        </div>
+    </div>
+
+    <script>
+        function clearDisplay() {
+            document.getElementById('display').innerText = '';
+        }
+
+        function deleteLast() {
+            const display = document.getElementById('display');
+            display.innerText = display.innerText.slice(0, -1);
+        }
+
+        function appendToDisplay(value) {
+            const display = document.getElementById('display');
+            display.innerText += value;
+        }
+
+        function calculateResult() {
+            const display = document.getElementById('display');
+            try {
+                display.innerText = eval(display.innerText);
+            } catch {
+                display.innerText = 'Error';
+            }
+        }
+    </script>
+</body>
+</html>
