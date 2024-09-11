@@ -35,9 +35,7 @@ mini-calculator/
 │   ├── mini_calculator_bg.png
 │   └── favicon.png
 │
-├── index.html
-├── style.css
-└── script.js
+└── index.html
 ```
 
 ## Usage
